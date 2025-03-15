@@ -37,7 +37,10 @@ class ProductManager:
     def total_value_of_all_products(self):
         total_value = sum(product.total_value() for product in self.products)
         print(f"Ukupna vrednost: {total_value} RSD")
-
+    
+    def remove_product_by_name(self, product_name):
+        self.products = [product for product in self.products if product.name != product_name]
+        print(f"Proizvodi '{product_name}' je uklonjen.")
 
 if __name__ == "__main__":
     manager = ProductManager()
@@ -49,6 +52,8 @@ if __name__ == "__main__":
     manager.add_product(product1)
     manager.add_product(product2)
     manager.add_product(product3)
+
+    manager.remove_product_by_name("Jabuka")
 
     manager.display_all_products()
     manager.total_value_of_all_products()
